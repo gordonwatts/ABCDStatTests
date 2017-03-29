@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ABCDTester.utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace ABCDTester.ABCD
         /// <summary>
         /// What we determined A to be
         /// </summary>
-        public double CalculatedA;
+        public NumberWithSystematic CalculatedA;
 
         /// <summary>
         /// What we found in each guy

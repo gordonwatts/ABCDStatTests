@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ABCDTester.utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -94,7 +95,7 @@ namespace ABCDTester.ABCD
                 B = _B,
                 C = _C,
                 D = _D,
-                CalculatedA = _B * _C / _D
+                CalculatedA = _B.AsSysNum() * _C.AsSysNum() / _D.AsSysNum()
             };
         }
     }

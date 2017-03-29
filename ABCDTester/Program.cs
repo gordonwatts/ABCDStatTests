@@ -21,10 +21,10 @@ namespace ABCDTester
                 .AccumulatePoints(new ABCDBasic(0.5, 0.5))
                 .GetABCDCalculation());
 
-            Console.WriteLine("A, B, C, D, CalcA");
+            Console.WriteLine("A, B, C, D, CalcA, CalcA StdDev");
             foreach (var rv in seqOfResults)
             {
-                Console.WriteLine($"{rv.A}, {rv.B}, {rv.C}, {rv.D}, {rv.CalculatedA}");
+                Console.WriteLine($"{rv.A}, {rv.B}, {rv.C}, {rv.D}, {rv.CalculatedA.Number}, {rv.CalculatedA.Error}");
             }
         }
     }
