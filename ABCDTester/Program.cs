@@ -15,14 +15,16 @@ namespace ABCDTester
         {
             var g = new ArbitraryFunctionGenerator(r => r, r => r);
 
-            var abcd = new ABCDBasic(0.5, 0.5);
-
-            var rv = g.GetPointSequence()
+            var seqOfResults = Enumerable.Range(0, 1000)
+                .Select(_ => g.GetPointSequence()
                 .Take(100000)
-                .AccumulatePoints(abcd)
-                .GetABCDCalculation();
+                .AccumulatePoints(new ABCDBasic(0.5, 0.5))
+                .GetABCDCalculation());
 
-            Console.WriteLine(rv);
+            foreach (var rv in seqOfResults)
+            {
+                Console.WriteLine($"{rv.A}, {rv.B}, {rv.C}, {rv.D}, {rv.CalculatedA}");
+            }
         }
     }
 }
