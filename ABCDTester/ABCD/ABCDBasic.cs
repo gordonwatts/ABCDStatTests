@@ -40,6 +40,11 @@ namespace ABCDTester.ABCD
         }
 
         /// <summary>
+        /// Return the total number of points we've accumulated
+        /// </summary>
+        public int TotalPoints => _A + _B + _C + _D;
+
+        /// <summary>
         /// The 4 regions
         /// </summary>
         private int _A = 0, _B = 0, _C = 0, _D = 0;
@@ -81,6 +86,20 @@ namespace ABCDTester.ABCD
                     _C++;
                 }
             }
+        }
+
+        /// <summary>
+        /// Return true if anyone's error is larger than the given error. Do it as error squared in order
+        /// to make it efficient.
+        /// </summary>
+        /// <param name="error2"></param>
+        /// <returns></returns>
+        public bool CheckMaxError (double error2)
+        {
+            return 1.0/_A > error2
+                || 1.0 / _B > error2
+                || 1.0 / _C > error2
+                || 1.0 / _D > error2;
         }
 
         /// <summary>

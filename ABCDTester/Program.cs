@@ -35,10 +35,16 @@ namespace ABCDTester
 
             // Fill the ABCD plane
             var seqOfResults = Enumerable.Range(0, cmdOpts.NTrials).AsParallel()
-                .Select(_ => g.GetPointSequence()
-                .Take(cmdOpts.NEvents)
-                .AccumulatePoints(new ABCDBasic(cmdOpts.XCut, cmdOpts.YCut))
-                .GetABCDCalculation());
+                .Select(_ => {
+                    ABCDBasic abcdAccumulator = new ABCDBasic(cmdOpts.XCut, cmdOpts.YCut);
+                    return g.GetPointSequence()
+                            .TakeWhile(d => cmdOpts.MinError < 0.01
+                                    ? abcdAccumulator.TotalPoints < cmdOpts.NEvents
+                                    : abcdAccumulator.CheckMaxError(cmdOpts.MinError))
+                            .AccumulatePoints(abcdAccumulator)
+                            .GetABCDCalculation();
+                    }
+                );
 
             // Dump everything out in a csv format (because everyone knows how to read that!)
             Console.WriteLine("A,B,C,D,CalcA,CalcA StdDev");
@@ -64,6 +70,9 @@ namespace ABCDTester
 
             [Option("YCut", Default = 0.5, HelpText = "Where to put the cut along the y-axis")]
             public double YCut { get; set; }
+
+            [Option("MinError", Default = -1.0, HelpText = "Minimum error (fraciton) for each of A, B, C, and D - will keep the trials going until sqrt(N)")]
+            public double MinError { get; set; }
         }
     }
 }
