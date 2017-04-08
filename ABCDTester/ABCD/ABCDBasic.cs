@@ -114,7 +114,7 @@ namespace ABCDTester.ABCD
                 B = _B,
                 C = _C,
                 D = _D,
-                CalculatedA = _B.AsSysNum() * _C.AsSysNum() / _D.AsSysNum()
+                CalculatedA = _D == 0 ? (-1).AsSysNum() : _B.AsSysNum() * _C.AsSysNum() / _D.AsSysNum()
             };
         }
     }
