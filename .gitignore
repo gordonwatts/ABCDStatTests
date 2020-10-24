@@ -299,6 +299,8 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
+*.pyc
+
 # Windows shortcuts
 *.lnk
 /notebooks/.ipynb_checkpoints
