@@ -306,3 +306,4 @@ $RECYCLE.BIN/
 /notebooks/.ipynb_checkpoints
 .venv
 data/
+.conda_env
