@@ -6,5 +6,8 @@ pandas
 matplotlib
 scikit-learn
 seaborn
+numba
+jax
+jaxlib
 # Do not know how to get torch down, so you'll have to do this line by hand, sadly.
 # pip install torch==1.7.0+cpu torchvision==0.8.1+cpu torchaudio===0.7.0 -f https://download.pytorch.org/whl/torch_stable.html
